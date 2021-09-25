@@ -14,37 +14,6 @@ class BoardTest {
     
     private static final String BR = System.lineSeparator();
     
-    private static class TestBoard1 extends BoardBase {
-        
-        private TestBoard1(Map<Point, Color> map) {
-            super(map);
-        }
-        
-        @Override
-        public Board getApplied(Move move) {
-            throw new UnsupportedOperationException();
-        }
-    }
-    
-    private static class TestBoard2 implements Board {
-        
-        private final Map<Point, Color> map;
-        
-        private TestBoard2(Map<Point, Color> map) {
-            this.map = map;
-        }
-        
-        @Override
-        public Color colorAt(Point point) {
-            return map.get(point);
-        }
-        
-        @Override
-        public Board getApplied(Move move) {
-            throw new UnsupportedOperationException();
-        }
-    }
-    
     private static final Map<Point, Color> allBlack = Point.stream()
             .collect(Collectors.toMap(Function.identity(), p -> Color.BLACK));
     
@@ -88,36 +57,30 @@ class BoardTest {
     
     @Test
     void testEquals() {
-        Board test1a = new TestBoard1(initMap);
-        Board test1b = new TestBoard1(allBlack);
-        Board test1c = new TestBoard1(allEmpty);
+        Board test1a = new BoardImpl(initMap);
+        Board test1b = new BoardImpl(initMap);
+        Board test2 = new BoardImpl(allBlack);
+        Board test3 = new BoardImpl(allEmpty);
         
-        Board test2a = new TestBoard2(initMap);
-        Board test2b = new TestBoard2(allBlack);
-        Board test2c = new TestBoard2(allEmpty);
-        
-        assertThrows(NullPointerException.class, () -> Board.equals(null, test2a));
-        assertThrows(NullPointerException.class, () -> Board.equals(test1a, null));
+        assertThrows(NullPointerException.class, () -> Board.equals(null, test1a));
+        assertThrows(NullPointerException.class, () -> Board.equals(test2, null));
         assertThrows(NullPointerException.class, () -> Board.equals(null, null));
         
         assertTrue(Board.equals(test1a, test1a));
+        assertTrue(Board.equals(test1a, test1b));
         
-        assertTrue(Board.equals(test1a, test2a));
-        assertTrue(Board.equals(test1b, test2b));
-        assertTrue(Board.equals(test1c, test2c));
-        
-        assertFalse(Board.equals(test1a, test2b));
-        assertFalse(Board.equals(test1b, test2c));
-        assertFalse(Board.equals(test1c, test2a));
+        assertFalse(Board.equals(test1a, test2));
+        assertFalse(Board.equals(test2, test3));
+        assertFalse(Board.equals(test3, test1a));
     }
     
     @Test
     void testHashCode() {
         assertThrows(NullPointerException.class, () -> Board.hashCode(null));
         
-        assertEquals(initMap.hashCode(), Board.hashCode(new TestBoard1(initMap)));
-        assertEquals(allBlack.hashCode(), Board.hashCode(new TestBoard1(allBlack)));
-        assertEquals(allEmpty.hashCode(), Board.hashCode(new TestBoard1(allEmpty)));
+        assertEquals(initMap.hashCode(), Board.hashCode(new BoardImpl(initMap)));
+        assertEquals(allBlack.hashCode(), Board.hashCode(new BoardImpl(allBlack)));
+        assertEquals(allEmpty.hashCode(), Board.hashCode(new BoardImpl(allEmpty)));
     }
     
     @Test
@@ -132,7 +95,7 @@ class BoardTest {
                 + "6 ・・・・・・・・" + BR
                 + "7 ・・・・・・・・" + BR
                 + "8 ・・・・・・・・" + BR,
-                Board.toString(new TestBoard1(initMap)));
+                Board.toString(new BoardImpl(initMap)));
         
         assertEquals(""
                 + "  a b c d e f g h " + BR
@@ -144,7 +107,7 @@ class BoardTest {
                 + "6 ●●●●●●●●" + BR
                 + "7 ●●●●●●●●" + BR
                 + "8 ●●●●●●●●" + BR,
-                Board.toString(new TestBoard1(allBlack)));
+                Board.toString(new BoardImpl(allBlack)));
         
         assertEquals(""
                 + "  a b c d e f g h " + BR
@@ -156,7 +119,7 @@ class BoardTest {
                 + "6 ・・・・・・・・" + BR
                 + "7 ・・・・・・・・" + BR
                 + "8 ・・・・・・・・" + BR,
-                Board.toString(new TestBoard1(linedMap)));
+                Board.toString(new BoardImpl(linedMap)));
     }
     
     @Test
@@ -170,7 +133,7 @@ class BoardTest {
                 + "・・・・・・・・"
                 + "・・・・・・・・"
                 + "・・・・・・・・",
-                Board.toStringInline(new TestBoard1(initMap)));
+                Board.toStringInline(new BoardImpl(initMap)));
         
         assertEquals(""
                 + "●●●●●●●●"
@@ -181,7 +144,7 @@ class BoardTest {
                 + "●●●●●●●●"
                 + "●●●●●●●●"
                 + "●●●●●●●●",
-                Board.toStringInline(new TestBoard1(allBlack)));
+                Board.toStringInline(new BoardImpl(allBlack)));
         
         assertEquals(""
                 + "・・・・・・・・"
@@ -192,14 +155,14 @@ class BoardTest {
                 + "・・・・・・・・"
                 + "・・・・・・・・"
                 + "・・・・・・・・",
-                Board.toStringInline(new TestBoard1(linedMap)));
+                Board.toStringInline(new BoardImpl(linedMap)));
     }
     
     @Test
     void testCounts() {
-        assertEquals(Map.of(Color.BLACK, 2, Color.WHITE, 2), new TestBoard1(initMap).counts());
-        assertEquals(Map.of(Color.BLACK, 64, Color.WHITE, 0), new TestBoard1(allBlack).counts());
-        assertEquals(Map.of(Color.BLACK, 0, Color.WHITE, 64), new TestBoard1(allWhite).counts());
-        assertEquals(Map.of(Color.BLACK, 0, Color.WHITE, 0), new TestBoard1(allEmpty).counts());
+        assertEquals(Map.of(Color.BLACK, 2, Color.WHITE, 2), new BoardImpl(initMap).counts());
+        assertEquals(Map.of(Color.BLACK, 64, Color.WHITE, 0), new BoardImpl(allBlack).counts());
+        assertEquals(Map.of(Color.BLACK, 0, Color.WHITE, 64), new BoardImpl(allWhite).counts());
+        assertEquals(Map.of(Color.BLACK, 0, Color.WHITE, 0), new BoardImpl(allEmpty).counts());
     }
 }

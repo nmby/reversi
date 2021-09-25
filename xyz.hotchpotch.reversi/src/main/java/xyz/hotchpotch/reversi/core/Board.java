@@ -20,7 +20,7 @@ public interface Board {
      * @return ゲーム開始時状態のリバーシ盤
      */
     public static Board initBoard() {
-        return new FunctionalBoard();
+        return new BoardImpl();
     }
     
     /**

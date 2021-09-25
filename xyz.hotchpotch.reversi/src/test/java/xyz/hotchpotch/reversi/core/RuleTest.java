@@ -14,22 +14,6 @@ class RuleTest {
     
     // [static members] ********************************************************
     
-    private static class TestBoard extends BoardBase {
-        
-        private TestBoard() {
-            super();
-        }
-        
-        private TestBoard(Map<Point, Color> map) {
-            super(map);
-        }
-        
-        @Override
-        public Board getApplied(Move move) {
-            throw new UnsupportedOperationException();
-        }
-    }
-    
     private static final Map<Point, Color> allBlack = Point.stream()
             .collect(Collectors.toMap(Function.identity(), p -> Color.BLACK));
     
@@ -48,38 +32,38 @@ class RuleTest {
     
     @Test
     void testIsGameOngoing() {
-        assertTrue(Rule.isGameOngoing(new TestBoard(initMap)));
+        assertTrue(Rule.isGameOngoing(new BoardImpl(initMap)));
         
-        assertFalse(Rule.isGameOngoing(new TestBoard(allBlack)));
-        assertFalse(Rule.isGameOngoing(new TestBoard(allEmpty)));
+        assertFalse(Rule.isGameOngoing(new BoardImpl(allBlack)));
+        assertFalse(Rule.isGameOngoing(new BoardImpl(allEmpty)));
         
         assertThrows(NullPointerException.class, () -> Rule.isGameOngoing(null));
     }
     
     @Test
     void testWinner() {
-        assertSame(Color.BLACK, Rule.winner(new TestBoard(allBlack)));
-        assertSame(Color.WHITE, Rule.winner(new TestBoard(allWhite)));
-        assertNull(Rule.winner(new TestBoard(allEmpty)));
+        assertSame(Color.BLACK, Rule.winner(new BoardImpl(allBlack)));
+        assertSame(Color.WHITE, Rule.winner(new BoardImpl(allWhite)));
+        assertNull(Rule.winner(new BoardImpl(allEmpty)));
         
-        assertThrows(IllegalStateException.class, () -> Rule.winner(new TestBoard()));
+        assertThrows(IllegalStateException.class, () -> Rule.winner(new BoardImpl()));
         assertThrows(NullPointerException.class, () -> Rule.winner(null));
     }
     
     @Test
     void testCanPut() {
-        assertTrue(Rule.canPut(new TestBoard(), Color.BLACK));
-        assertTrue(Rule.canPut(new TestBoard(), Color.WHITE));
-        assertFalse(Rule.canPut(new TestBoard(allBlack), Color.BLACK));
-        assertFalse(Rule.canPut(new TestBoard(allBlack), Color.WHITE));
+        assertTrue(Rule.canPut(new BoardImpl(), Color.BLACK));
+        assertTrue(Rule.canPut(new BoardImpl(), Color.WHITE));
+        assertFalse(Rule.canPut(new BoardImpl(allBlack), Color.BLACK));
+        assertFalse(Rule.canPut(new BoardImpl(allBlack), Color.WHITE));
         
         assertThrows(NullPointerException.class, () -> Rule.canPut(null, Color.BLACK));
-        assertThrows(NullPointerException.class, () -> Rule.canPut(new TestBoard(), null));
+        assertThrows(NullPointerException.class, () -> Rule.canPut(new BoardImpl(), null));
     }
     
     @Test
     void testCanPutAt() {
-        Board testBoard = new TestBoard();
+        Board testBoard = new BoardImpl();
         
         for (Point p : Point.values()) {
             if (List.of("e3", "f4", "c5", "d6").contains(p.pos())) {
@@ -96,8 +80,8 @@ class RuleTest {
     
     @Test
     void testCanApply() {
-        Board testBoard1 = new TestBoard();
-        Board testBoard2 = new TestBoard(allEmpty);
+        Board testBoard1 = new BoardImpl();
+        Board testBoard2 = new BoardImpl(allEmpty);
         
         assertTrue(Rule.canApply(testBoard1, new Move(Color.BLACK, Point.of("d3"))));
         assertTrue(Rule.canApply(testBoard1, new Move(Color.WHITE, Point.of("e3"))));
@@ -112,7 +96,7 @@ class RuleTest {
     
     @Test
     void testReversibles() {
-        Board testBoard = new TestBoard();
+        Board testBoard = new BoardImpl();
         Move move = new Move(Color.BLACK, Point.of("d3"));
         
         assertEquals(
