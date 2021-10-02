@@ -11,8 +11,16 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
 }
 
-application {
-    mainClass = 'xyz.hotchpotch.reversi.cui.Menu'
+mainClassName = 'xyz.hotchpotch.reversi.cui.Menu'
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+run {
+    standardInput = System.in
 }
 
 tasks.withType(JavaCompile) {
