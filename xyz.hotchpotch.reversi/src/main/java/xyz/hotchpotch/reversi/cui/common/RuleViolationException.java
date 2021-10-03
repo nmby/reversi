@@ -13,6 +13,7 @@ public class RuleViolationException extends Exception {
     
     // [instance members] ******************************************************
     
+    /** このルール違反によって確定したゲーム結果 */
     private final GameResult gameResult;
     
     /**

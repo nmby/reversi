@@ -25,9 +25,16 @@ public record MatchCondition(
      * @author nmby
      */
     public static enum MatchSide {
+        /** A-side */
         A,
+        /** B-side */
         B;
         
+        /**
+         * 自身と反対の側を返します。<br>
+         * 
+         * @return 自身と反対の側
+         */
         public MatchSide opposite() {
             return this == A ? B : A;
         }

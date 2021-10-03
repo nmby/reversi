@@ -20,6 +20,7 @@ import xyz.hotchpotch.reversi.core.Rule;
     
     // [instance members] ******************************************************
     
+    /** 思考処理を委譲するプロキシプレーヤー */
     protected final Player proxy = new RandomAIPlayer();
     
     @Override
