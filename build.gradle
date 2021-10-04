@@ -1,0 +1,12 @@
+
+
+task publishJavadoc {
+    group 'my-custom'
+    
+    doLast {
+        project.sync {
+            from "xyz.hotchpotch.reversi/build/docs/javadoc"
+            into "apidoc"
+        }
+    }
+}
