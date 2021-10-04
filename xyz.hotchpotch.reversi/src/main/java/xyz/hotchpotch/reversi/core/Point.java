@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 /**
  * リバーシ盤上の位置を表す不変クラスです。<br>
- * 同じ位置を表すインスタンスは同一であることが保証されます。<br>
+ * 同じ位置を表す {@link Point} インスタンスは同一であることが保証されます。<br>
  * 
  * @author nmby
  */

@@ -10,7 +10,7 @@ import xyz.hotchpotch.reversi.core.Player;
 import xyz.hotchpotch.reversi.players.AIPlayers;
 
 /**
- * 実施条件設定に関するユーティリティクラスです。<br>
+ * 標準入力からリバーシの実施条件を取得するためのユーティリティクラスです。<br>
  * 
  * @author nmby
  */
@@ -21,10 +21,10 @@ public class ConditionUtil {
     private static final String BR = System.lineSeparator();
     
     /**
-     * プレーヤーの設定を行います。<br>
+     * 標準入力からプレーヤークラスを取得します。<br>
      * 
      * @param target 選択するプレーヤーの呼び名
-     * @param allowHuman 人間プレーヤーを参加させる場合は {@code true}
+     * @param allowHuman 手入力プレーヤーを参加させる場合は {@code true}
      * @return プレーヤークラス
      * @throws NullPointerException {@code prompt} が {@code null} の場合
      */
@@ -74,7 +74,7 @@ public class ConditionUtil {
     }
     
     /**
-     * 総当たり戦参加プレーヤーの設定を行います。<br>
+     * 標準入力から総当たり戦参加プレーヤーを取得します。<br>
      * 
      * @return プレーヤークラスのリスト
      */
@@ -166,7 +166,7 @@ public class ConditionUtil {
             .build();
     
     /**
-     * 1ゲームあたりの持ち時間の設定を行います。<br>
+     * 標準入力から1ゲームあたりの持ち時間を取得します。<br>
      * 
      * @param prefix ユーザー向け説明
      * @return 1ゲームあたりの持ち時間
@@ -188,7 +188,7 @@ public class ConditionUtil {
     }
     
     /**
-     * 対戦回数の設定を行います。<br>
+     * 標準入力から対戦回数を取得します。<br>
      * 
      * @param prefix ユーザー向け説明
      * @return 対戦回数

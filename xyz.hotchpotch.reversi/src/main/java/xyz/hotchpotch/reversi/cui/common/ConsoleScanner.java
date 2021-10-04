@@ -15,10 +15,10 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 /**
- * 標準入力から対話的にユーザ入力を取得するためのクラスです。<br>
+ * 標準入力から対話的にユーザ入力値を取得するためのクラスです。<br>
  * <br>
  * 求める形式とは異なる入力をユーザが行った場合、{@link ConsoleScanner} はユーザに何度も再入力を求めます。<br>
- * 正しい形式の入力が得られたら、それを必要な形式（数値、クラス、列挙型等）に変換し、呼出し元に返却します。<br>
+ * 正しい形式の入力値が得られたら、それを必要な形式（数値、クラス、列挙型等）に変換し、呼出し元に返却します。<br>
  * <br>
  * 次の例では、1～12の範囲の整数を標準入力から対話的に取得します。
  * <pre>
@@ -37,11 +37,11 @@ import java.util.regex.PatternSyntaxException;
  * このクラスのオブジェクトを複数のスレッドから利用することは避けてください。<br>
  * ただし、このクラスのオブジェクトが {@link #get()} を実行しユーザからの入力を待機しているときに、
  * 他のスレッドから割り込みを行うことができます。<br>
- * オブジェクトは、割り込みを検知すると入力待機を解除し、標準では {@code null} を返却して速やかに終了します。<br>
+ * {@link ConsoleScanner} オブジェクトは、割り込みを検知すると入力待機を解除し、標準では {@code null} を返却して速やかに終了します。<br>
  * 割り込みを検知した際の動作はカスタマイズすることが可能です。
  * 詳細は {@link Builder#emergencyMeasure(Function)} の説明を参照してください。<br>
  * 
- * @param <T> 最終的にクライアント・アプリケーションに返却されるデータの型
+ * @param <T> 最終的に呼出し元に返却されるデータの型
  * @author nmby
  */
 public class ConsoleScanner<T> implements Supplier<T> {
@@ -66,7 +66,7 @@ public class ConsoleScanner<T> implements Supplier<T> {
     /**
      * {@link ConsoleScanner} オブジェクトを構築するためのビルダーです。
      * 
-     * @param <T> 最終的にクライアント・アプリケーションに返却されるデータの型
+     * @param <T> 最終的に呼出し元に返却されるデータの型
      * @author nmby
      */
     public static class Builder<T> {
@@ -174,7 +174,7 @@ public class ConsoleScanner<T> implements Supplier<T> {
     /**
      * {@link ConsoleScanner} のビルダーを返します。<br>
      * 
-     * @param <T> 最終的にクライアント・アプリケーションに返却されるデータの型
+     * @param <T> 最終的に呼出し元に返却されるデータの型
      * @return {@link Builder} オブジェクト
      */
     public static <T> Builder<T> builder() {
@@ -279,7 +279,7 @@ public class ConsoleScanner<T> implements Supplier<T> {
     /**
      * リストの中から選択された要素を取得するための {@link ConsoleScanner} のビルダーを返します。<br>
      * 
-     * @param <T> 最終的にクライアント・アプリケーションに返却されるデータの型
+     * @param <T> 最終的に呼出し元に返却されるデータの型
      * @param list 選択対象の要素が格納されたリスト
      * @return {@link Builder} オブジェクト
      * @throws NullPointerException {@code list} が {@code null} の場合
@@ -312,7 +312,7 @@ public class ConsoleScanner<T> implements Supplier<T> {
     /**
      * 列挙型の要素の中から選択された要素を取得するための {@link ConsoleScanner} のビルダーを返します。<br>
      * 
-     * @param <E> 最終的にクライアント・アプリケーションに返却されるデータの型
+     * @param <E> 最終的に呼出し元に返却されるデータの型
      * @param type 列挙型クラス
      * @return {@link Builder} オブジェクト
      * @throws NullPointerException {@code type} が {@code null} の場合

@@ -21,7 +21,7 @@ public class SimplestAIPlayer implements Player {
      * {@inheritDoc}
      * <br>
      * この実装は、リバーシ盤上を左上から順に走査し、
-     * 最初に見つかった置ける位置を自身の手とします。<br>
+     * 最初に見つかった石を置ける位置を自身の手とします。<br>
      */
     @Override
     public Point decide(Board board, Color color, long remainingMillis) {

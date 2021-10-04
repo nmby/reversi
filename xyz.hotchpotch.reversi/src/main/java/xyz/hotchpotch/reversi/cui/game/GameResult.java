@@ -8,7 +8,7 @@ import xyz.hotchpotch.reversi.core.Color;
 import xyz.hotchpotch.reversi.core.Rule;
 
 /**
- * ゲーム実施結果を保持するレコードです。<br>
+ * ゲーム（1回対戦）実施結果を保持するレコードです。<br>
  * 
  * @author nmby
  */
@@ -64,7 +64,7 @@ public record GameResult(
     }
     
     /**
-     * 片方のプレーヤーのインスタンス化に失敗した場合の不戦敗を表すゲーム実施結果を生成して返します。<br>
+     * 片方のプレーヤークラスのインスタンス化に失敗した場合の不戦敗を表すゲーム実施結果を生成して返します。<br>
      * 
      * @param failed インスタンス化に失敗したプレーヤーの色
      * @param e インスタンス化失敗時に発生した例外
@@ -84,7 +84,7 @@ public record GameResult(
     }
     
     /**
-     * 双方のプレーヤーのインスタンス化に失敗した場合のゲーム不成立を表すゲーム実施結果を生成して返します。<br>
+     * 双方のプレーヤークラスのインスタンス化に失敗した場合のゲーム不成立を表すゲーム実施結果を生成して返します。<br>
      * 
      * @param eBlack 黒プレーヤーのインスタンス化失敗時に発生した例外
      * @param eWhite 白プレーヤーのインスタンス化失敗時に発生した例外
@@ -112,10 +112,10 @@ public record GameResult(
     // [instance members] ******************************************************
     
     /**
-     * ゲーム実施結果を生成します。<br>
+     * ゲーム（1回対戦）実施結果を生成します。<br>
      * 
      * @param board ゲーム終了時点のリバーシ盤
-     * @param winner ゲーム勝者の色（引き分けの場合は {@code null}）
+     * @param winner 勝者の色（引き分けの場合は {@code null}）
      * @param exception ゲーム終了の原因となった例外
      * @param desc ゲーム実施結果の説明
      * @throws NullPointerException {@code desc} が {@code null} の場合

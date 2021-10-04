@@ -3,7 +3,7 @@ package xyz.hotchpotch.reversi.core;
 import java.util.Objects;
 
 /**
- * リバーシゲームの手を表す不変クラス（レコード）です。<br>
+ * リバーシゲームの手を表すレコードです。<br>
  * 
  * @author nmby
  */

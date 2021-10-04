@@ -19,7 +19,7 @@ import xyz.hotchpotch.reversi.core.Point;
 import xyz.hotchpotch.reversi.core.Rule;
 
 /**
- * 幅優先探索により最善手を探索する {@link Player} の実装です。<br>
+ * 幅優先探索により最善手を探す {@link Player} の実装です。<br>
  * 
  * @author nmby
  */
@@ -122,7 +122,7 @@ public class WidthFirstAIPlayer extends AIPlayerBase {
     /**
      * {@inheritDoc}
      * <br>
-     * この実装は、幅優先探索により最善手を探索します。<br>
+     * この実装は、幅優先探索により最善手を探します。<br>
      */
     @Override
     protected Point decide2(Board board, Color color, List<Point> availables, Instant timelimit) {

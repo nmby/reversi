@@ -30,7 +30,7 @@ public class CrazyAIPlayer implements Player {
     /**
      * {@inheritDoc}
      * <br>
-     * この実装は、石を置ける位置の中からランダムに自身の手を選択しますが、
+     * この実装は、通常は石を置ける位置の中からランダムに自身の手を選択しますが、
      * しばしば
      * <ul>
      *   <li>ルール違反の手を選択する</li>

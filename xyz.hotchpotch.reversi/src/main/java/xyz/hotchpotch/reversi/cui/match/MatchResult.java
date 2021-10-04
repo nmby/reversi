@@ -22,21 +22,19 @@ public record MatchResult(
     /**
      * 複数回対戦結果を生成して返します。<br>
      * 
-     * @param aIsBlackResults プレーヤーAが黒のときのゲーム実施結果
-     * @param bIsBlackResults プレーヤーBが黒のときのゲーム実施結果
+     * @param resultsA プレーヤーAが黒のときのゲーム実施結果
+     * @param resultsB プレーヤーBが黒のときのゲーム実施結果
      * @return 複数回対戦結果
-     * @throws NullPointerException
-     *      {@code aIsBlackResults}, {@code bIsBlackResults} のいずれかが {@code null} の場合
-     * @throws IllegalArgumentException
-     *      {@code aIsBlackResults}, {@code bIsBlackResults} がともに長さ0の場合
+     * @throws NullPointerException {@code resultsA}, {@code resultsB} のいずれかが {@code null} の場合
+     * @throws IllegalArgumentException {@code resultsA}, {@code resultsB} がともに長さ0の場合
      */
     public static MatchResult of(
-            List<GameResult> aIsBlackResults,
-            List<GameResult> bIsBlackResults) {
+            List<GameResult> resultsA,
+            List<GameResult> resultsB) {
         
-        Objects.requireNonNull(aIsBlackResults, "aIsBlackResults");
-        Objects.requireNonNull(bIsBlackResults, "bIsBlackResults");
-        if (aIsBlackResults.isEmpty() && bIsBlackResults.isEmpty()) {
+        Objects.requireNonNull(resultsA, "resultsA");
+        Objects.requireNonNull(resultsB, "resultsB");
+        if (resultsA.isEmpty() && resultsB.isEmpty()) {
             throw new IllegalArgumentException("一回も対戦が行われていません。");
         }
         
@@ -44,7 +42,7 @@ public record MatchResult(
         int bWins = 0;
         int draws = 0;
         
-        for (GameResult result : aIsBlackResults) {
+        for (GameResult result : resultsA) {
             if (result.winner() == Color.BLACK) {
                 aWins++;
             } else if (result.winner() == Color.WHITE) {
@@ -53,7 +51,7 @@ public record MatchResult(
                 draws++;
             }
         }
-        for (GameResult result : bIsBlackResults) {
+        for (GameResult result : resultsB) {
             if (result.winner() == Color.BLACK) {
                 bWins++;
             } else if (result.winner() == Color.WHITE) {

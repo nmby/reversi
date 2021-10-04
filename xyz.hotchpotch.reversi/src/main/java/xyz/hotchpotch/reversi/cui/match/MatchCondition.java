@@ -25,9 +25,9 @@ public record MatchCondition(
      * @author nmby
      */
     public static enum MatchSide {
-        /** A-side */
+        /** A側 */
         A,
-        /** B-side */
+        /** B側 */
         B;
         
         /**
@@ -41,7 +41,7 @@ public record MatchCondition(
     }
     
     /**
-     * 複数回対戦条件をコンソールから設定します。<br>
+     * 標準入力から複数回対戦条件を取得します。<br>
      * 
      * @return 複数回対戦条件
      */
@@ -72,7 +72,7 @@ public record MatchCondition(
      * 
      * @param playerA プレーヤーAクラス
      * @param playerB プレーヤーBクラス
-     * @param givenMillis 1ゲームにおける1プレーヤーあたりの持ち時間（ミリ秒）
+     * @param givenMillis ゲーム毎・プレーヤー毎の持ち時間（ミリ秒）
      * @param times 対戦回数
      * @param interactive ユーザーによる確認を求めながら進める場合は {@code true}
      * @throws NullPointerException {@code playerA}, {@code playerB} のいずれかが {@code null} の場合

@@ -7,7 +7,7 @@ import xyz.hotchpotch.reversi.core.Player;
 import xyz.hotchpotch.reversi.cui.common.ConditionUtil;
 
 /**
- * ゲーム実施条件を保持するレコードです。<br>
+ * ゲーム（1回対戦）実施条件を保持するレコードです。<br>
  * 
  * @author nmby
  */
@@ -20,7 +20,7 @@ public record GameCondition(
     // [static members] ********************************************************
     
     /**
-     * ゲーム実施条件をコンソールから設定します。<br>
+     * 標準入力からゲーム（1回対戦）実施条件を取得します。<br>
      * 
      * @return ゲーム実施条件
      */
@@ -44,11 +44,11 @@ public record GameCondition(
     // [instance members] ******************************************************
     
     /**
-     * ゲーム実施条件を生成します。<br>
+     * ゲーム（1回対戦）実施条件を生成します。<br>
      * 
      * @param playerBlack 黒プレーヤークラス
      * @param playerWhite 白プレーヤークラス
-     * @param givenMillis ゲームにおける1プレーヤーあたりの持ち時間（ミリ秒）
+     * @param givenMillis プレーヤー毎の持ち時間（ミリ秒）
      * @param interactive ユーザーによる確認を求めながら進める場合は {@code true}
      * @throws NullPointerException {@code playerBlack}, {@code playerWhite} のいずれかが {@code null} の場合
      * @throws IllegalArgumentException {@code givenMillis} が 0 以下の場合

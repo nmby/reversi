@@ -21,7 +21,7 @@ import xyz.hotchpotch.reversi.cui.common.ConsoleScanner;
 import xyz.hotchpotch.reversi.cui.common.RuleViolationException;
 
 /**
- * ゲーム実行クラスです。<br>
+ * ゲーム（1回対戦）実行クラスです。<br>
  * 
  * @author nmby
  */
@@ -40,7 +40,7 @@ public class GameRunner {
     }
     
     /**
-     * 与えられた条件でゲームを実行する {@link GameRunner} インスタンスを生成して返します。<br>
+     * 与えられた条件でゲーム（1回対戦）を実行する {@link GameRunner} インスタンスを生成して返します。<br>
      * 
      * @param gameCondition ゲーム実施条件
      * @return ゲーム実行器
@@ -63,7 +63,7 @@ public class GameRunner {
     }
     
     /**
-     * ゲームを実行して結果を返します。<br>
+     * ゲーム（1回対戦）を実行して結果を返します。<br>
      * 
      * @return ゲーム実施結果
      */

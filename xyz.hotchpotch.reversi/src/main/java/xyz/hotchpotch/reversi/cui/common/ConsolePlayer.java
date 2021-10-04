@@ -6,7 +6,7 @@ import xyz.hotchpotch.reversi.core.Player;
 import xyz.hotchpotch.reversi.core.Point;
 
 /**
- * ユーザーがコンソール上で手入力で手を指定する {@link Player} の実装です。<br>
+ * ユーザーが標準入力から手入力で手を指定する {@link Player} の実装です。<br>
  * 
  * @author nmby
  */

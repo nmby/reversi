@@ -20,7 +20,7 @@ public record LeagueCondition(
     // [static members] ********************************************************
     
     /**
-     * 総当たり戦実施条件をコンソールから設定します。<br>
+     * 標準入力から総当たり戦実施条件を取得します。<br>
      * 
      * @return 総当たり戦実施条件
      */
@@ -45,7 +45,7 @@ public record LeagueCondition(
      * 総当たり戦実施条件を生成します。<br>
      * 
      * @param players プレーヤークラス
-     * @param givenMillis 1ゲームにおける1プレーヤーあたりの持ち時間（ミリ秒）
+     * @param givenMillis ゲーム毎・プレーヤー毎の持ち時間（ミリ秒）
      * @param times 1ペアあたりの対戦回数
      * @param interactive ユーザーによる確認を求めながら進める場合は {@code true}
      * @throws NullPointerException {@code players} が {@code null} の場合

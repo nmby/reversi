@@ -24,7 +24,7 @@ public class LeagueRunner {
      * 与えられた条件で総当たり戦を実行する {@link LeagueRunner} インスタンスを生成して返します。<br>
      * 
      * @param leagueCondition 総当たり戦実施条件
-     * @return 総当たり戦実施結果
+     * @return 総当たり戦実行器
      * @throws NullPointerException {@code leagueCondition} が {@code null} の場合
      */
     public static LeagueRunner of(LeagueCondition leagueCondition) {

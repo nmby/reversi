@@ -10,7 +10,7 @@ import xyz.hotchpotch.reversi.core.Point;
 import xyz.hotchpotch.reversi.core.Rule;
 
 /**
- * 自身の手をランダムに決定する {@link Player} の実装です。<br>
+ * 自身の手をランダムに選択する {@link Player} の実装です。<br>
  * 
  * @author nmby
  */
