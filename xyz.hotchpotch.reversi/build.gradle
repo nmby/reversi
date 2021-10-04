@@ -30,8 +30,20 @@ tasks.withType(JavaCompile) {
 
 tasks.named('javadoc') {
     options.encoding = 'UTF-8'
+    title = 'xyz.hotchpotch.reversi ' + version + ' API'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+task publishJavadoc(dependsOn: javadoc) {
+    group 'my-custom'
+    
+    doLast {
+        project.sync {
+            from "build/docs/javadoc"
+            into "../docs"
+        }
+    }
 }
