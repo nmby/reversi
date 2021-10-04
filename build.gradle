@@ -6,7 +6,7 @@ task publishJavadoc {
     doLast {
         project.sync {
             from "xyz.hotchpotch.reversi/build/docs/javadoc"
-            into "apidoc"
+            into "docs"
         }
     }
 }
