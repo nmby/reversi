@@ -30,7 +30,7 @@ tasks.withType(JavaCompile) {
 
 tasks.named('javadoc') {
     options.encoding = 'UTF-8'
-    title = 'xyz.hotchpotch.reversi ' + version + ' API'
+    title = 'xyz.hotchpotch.reversi ' + version + ' API仕様'
 }
 
 tasks.named('test') {
