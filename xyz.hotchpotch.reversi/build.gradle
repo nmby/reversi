@@ -1,0 +1,63 @@
+
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+}
+
+mainClassName = 'xyz.hotchpotch.reversi.cui.Menu'
+version = '3.0.0'
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+run {
+    standardInput = System.in
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('javadoc') {
+    options.encoding = 'UTF-8'
+    title = 'xyz.hotchpotch.reversi ' + version + ' API Specification'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+task publishJavadoc(dependsOn: javadoc) {
+    group 'my-custom'
+    
+    doLast {
+        project.sync {
+            from 'build/docs/javadoc'
+            into '../docs'
+            include "**/*.html"
+            filter { line ->
+                line = line.replaceFirst(/(<head.*>)/) { it[0] + project['myprop.gtm_head'] }
+                line = line.replaceFirst(/(<body.*>)/) { it[0] + project['myprop.gtm_body'] }
+            }
+        }
+        project.copy {
+            from 'build/docs/javadoc'
+            into '../docs'
+            exclude "**/*.html"
+        }
+    }
+}
+
+task publishAll(dependsOn: [publishJavadoc, build]) {
+    group 'my-custom'
+}
