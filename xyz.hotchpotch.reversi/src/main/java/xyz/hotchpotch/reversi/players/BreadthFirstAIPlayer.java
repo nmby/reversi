@@ -23,7 +23,7 @@ import xyz.hotchpotch.reversi.core.Rule;
  * 
  * @author nmby
  */
-public class WidthFirstAIPlayer extends AIPlayerBase {
+public class BreadthFirstAIPlayer extends AIPlayerBase {
     
     // [static members] ********************************************************
     

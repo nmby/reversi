@@ -23,7 +23,7 @@ public class AIPlayers {
                 SimplestAIPlayer.class,
                 RandomAIPlayer.class,
                 DepthFirstAIPlayer.class,
-                WidthFirstAIPlayer.class,
+                BreadthFirstAIPlayer.class,
                 MonteCarloAIPlayer.class,
                 CrazyAIPlayer.class);
     }
