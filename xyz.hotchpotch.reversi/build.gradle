@@ -30,7 +30,7 @@ tasks.withType(JavaCompile) {
 
 tasks.named('javadoc') {
     options.encoding = 'UTF-8'
-    title = 'xyz.hotchpotch.reversi ' + version + ' API仕様'
+    title = 'xyz.hotchpotch.reversi ' + version + ' API Specification'
 }
 
 tasks.named('test') {
@@ -46,7 +46,7 @@ task publishJavadoc(dependsOn: javadoc) {
             into '../docs'
             include "**/*.html"
             filter { line ->
-                line = line.replaceFirst("<head>", "<head>" + project['myprop.gtm_head'])
+                line = line.replaceFirst(/(<head.*>)/) { it[0] + project['myprop.gtm_head'] }
                 line = line.replaceFirst(/(<body.*>)/) { it[0] + project['myprop.gtm_body'] }
             }
         }
