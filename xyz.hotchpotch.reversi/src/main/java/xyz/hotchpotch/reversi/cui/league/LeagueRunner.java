@@ -71,12 +71,12 @@ public class LeagueRunner {
                 matchResults[i][j] = matchResult;
                 matchResults[j][i] = new MatchResult(matchResult.bWins(), matchResult.aWins(), matchResult.draws());
                 
-                print(("[%c vs %c] %cの勝ち：%" + tw + "d, %cの勝ち：%" + tw + "d, 引き分け：%" + tw + "d%n")
+                print(("[%c vs %c] %cの勝ち：%" + tw + "d, 引き分け：%" + tw + "d, %cの勝ち：%" + tw + "d%n")
                         .formatted(
                                 'A' + i, 'A' + j,
                                 'A' + i, matchResult.aWins(),
-                                'A' + j, matchResult.bWins(),
-                                matchResult.draws()));
+                                matchResult.draws(),
+                                'A' + j, matchResult.bWins()));
             }
         }
         
