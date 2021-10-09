@@ -51,9 +51,9 @@ task publishJavadoc(dependsOn: javadoc) {
             into '../docs'
             include "**/*.html"
             filter { line ->
-                line = line.replaceFirst(/(<head .*>)/) { it[0] + project['myprop.gtm_head'] }
+                line = line.replaceFirst(/(<head [^>]*>)/) { it[0] + project['myprop.gtm_head'] }
                 line = line.replaceFirst(/(<head>)/) { it[0] + project['myprop.gtm_head'] }
-                line = line.replaceFirst(/(<body .*>)/) { it[0] + project['myprop.gtm_body'] }
+                line = line.replaceFirst(/(<body [^>]*>)/) { it[0] + project['myprop.gtm_body'] }
                 line = line.replaceFirst(/(<body>)/) { it[0] + project['myprop.gtm_body'] }
             }
         }
