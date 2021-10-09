@@ -12,7 +12,11 @@ dependencies {
 }
 
 mainClassName = 'xyz.hotchpotch.reversi.cui.Menu'
-version = '3.0.0'
+version = '3.0.1'
+
+java {
+    withSourcesJar()
+}
 
 jar {
     manifest {
@@ -26,6 +30,7 @@ run {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
 }
 
 tasks.named('javadoc') {
@@ -46,8 +51,10 @@ task publishJavadoc(dependsOn: javadoc) {
             into '../docs'
             include "**/*.html"
             filter { line ->
-                line = line.replaceFirst(/(<head.*>)/) { it[0] + project['myprop.gtm_head'] }
-                line = line.replaceFirst(/(<body.*>)/) { it[0] + project['myprop.gtm_body'] }
+                line = line.replaceFirst(/(<head [^>]*>)/) { it[0] + project['myprop.gtm_head'] }
+                line = line.replaceFirst(/(<head>)/) { it[0] + project['myprop.gtm_head'] }
+                line = line.replaceFirst(/(<body [^>]*>)/) { it[0] + project['myprop.gtm_body'] }
+                line = line.replaceFirst(/(<body>)/) { it[0] + project['myprop.gtm_body'] }
             }
         }
         project.copy {
