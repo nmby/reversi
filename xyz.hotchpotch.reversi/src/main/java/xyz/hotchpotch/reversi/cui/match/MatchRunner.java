@@ -23,7 +23,7 @@ public class MatchRunner {
     
     private static final String BR = System.lineSeparator();
     
-    private static final ConsoleScanner<String> waiter = ConsoleScanner.waiter("> ");
+    private static final ConsoleScanner<String> waiter = ConsoleScanner.waiter();
     
     /**
      * 与えられた条件で複数回対戦を実行する {@link MatchRunner} インスタンスを生成して返します。<br>

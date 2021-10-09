@@ -31,7 +31,7 @@ public class GameRunner {
     
     private static final String BR = System.lineSeparator();
     
-    private static final ConsoleScanner<String> waiter = ConsoleScanner.waiter("> ");
+    private static final ConsoleScanner<String> waiter = ConsoleScanner.waiter();
     
     private static record PlayerInstance(Player player, Exception e) {
     }

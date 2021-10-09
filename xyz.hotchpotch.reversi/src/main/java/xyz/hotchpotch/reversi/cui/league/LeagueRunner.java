@@ -18,7 +18,7 @@ public class LeagueRunner {
     
     private static final String BR = System.lineSeparator();
     
-    private static final ConsoleScanner<String> waiter = ConsoleScanner.waiter("> ");
+    private static final ConsoleScanner<String> waiter = ConsoleScanner.waiter();
     
     /**
      * 与えられた条件で総当たり戦を実行する {@link LeagueRunner} インスタンスを生成して返します。<br>
