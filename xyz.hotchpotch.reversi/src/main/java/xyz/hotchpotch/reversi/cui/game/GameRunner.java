@@ -17,6 +17,7 @@ import xyz.hotchpotch.reversi.core.Move;
 import xyz.hotchpotch.reversi.core.Player;
 import xyz.hotchpotch.reversi.core.Point;
 import xyz.hotchpotch.reversi.core.Rule;
+import xyz.hotchpotch.reversi.cui.common.ConsolePlayer;
 import xyz.hotchpotch.reversi.cui.common.ConsoleScanner;
 import xyz.hotchpotch.reversi.cui.common.RuleViolationException;
 
@@ -91,9 +92,11 @@ public class GameRunner {
                 print("%sの番（残り %d ミリ秒） ... ".formatted(currTurn, millis));
                 
                 Decision decision = getDecision(player, board, currTurn, millis);
-                print(decision.point == null ? "PASS" : decision.point);
-                print(BR);
-                waitUser();
+                if (!(player instanceof ConsolePlayer)) {
+                    print(decision.point == null ? "PASS" : decision.point);
+                    print(BR);
+                    waitUser();
+                }
                 
                 Move move = new Move(currTurn, decision.point);
                 if (!Rule.canApply(board, move)) {
