@@ -14,6 +14,10 @@ dependencies {
 mainClassName = 'xyz.hotchpotch.reversi.cui.Menu'
 version = '3.0.0'
 
+java {
+    withSourcesJar()
+}
+
 jar {
     manifest {
         attributes 'Main-Class': mainClassName
@@ -26,6 +30,7 @@ run {
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
 }
 
 tasks.named('javadoc') {
