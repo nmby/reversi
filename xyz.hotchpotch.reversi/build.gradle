@@ -12,7 +12,7 @@ dependencies {
 }
 
 mainClassName = 'xyz.hotchpotch.reversi.cui.Menu'
-version = '3.0.1'
+version = '3.0.2'
 
 java {
     withSourcesJar()
