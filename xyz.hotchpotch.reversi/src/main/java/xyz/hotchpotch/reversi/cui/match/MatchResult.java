@@ -85,10 +85,10 @@ public record MatchResult(
     @Override
     public String toString() {
         float times = aWins + bWins + draws;
-        return "%sの勝ち：%d (%.1f%%), %sの勝ち：%d (%.1f%%), 引き分け：%d (%.1f%%)"
+        return "%sの勝ち：%d (%.1f%%), 引き分け：%d (%.1f%%), %sの勝ち：%d (%.1f%%)"
                 .formatted(
                         MatchSide.A, aWins, aWins * 100 / times,
-                        MatchSide.B, bWins, bWins * 100 / times,
-                        draws, draws * 100 / times);
+                        draws, draws * 100 / times,
+                        MatchSide.B, bWins, bWins * 100 / times);
     }
 }

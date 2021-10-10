@@ -12,7 +12,7 @@ dependencies {
 }
 
 mainClassName = 'xyz.hotchpotch.reversi.cui.Menu'
-version = '3.0.1'
+version = '3.0.2'
 
 java {
     withSourcesJar()
@@ -36,6 +36,7 @@ tasks.withType(JavaCompile) {
 tasks.named('javadoc') {
     options.encoding = 'UTF-8'
     title = 'xyz.hotchpotch.reversi ' + version + ' API Specification'
+    options.links("https://docs.oracle.com/en/java/javase/17/docs/api/")
 }
 
 tasks.named('test') {
